@@ -1,38 +1,34 @@
-﻿using System;
+﻿using AcademiaWebApi.Web.Api.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace AcademiaWebApi.Controllers
 {
-    [Authorize]
-    public class ValuesController : ApiController
+    public class MuscleController : ApiController
     {
-        // GET api/values
+        // GET: api/Muscle
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        // GET: api/Muscle/5
+        public Muscle Get(int id)
         {
-            return "value";
+            return new Muscle { MuscleId = 1, Name = "Peitoral" };
         }
 
-        // POST api/values
+        // POST: api/Muscle
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT api/values/5
+        // PUT: api/Muscle/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/values/5
+        // DELETE: api/Muscle/5
         public void Delete(int id)
         {
         }
