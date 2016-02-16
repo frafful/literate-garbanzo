@@ -49,10 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contexts\BodyBuildingContext.cs" />
     <Compile Include="Entities\Equipment.cs" />
     <Compile Include="Entities\Exercise.cs" />
     <Compile Include="Entities\Muscle.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IMuscleRepository.cs" />
+    <Compile Include="Repositories\MuscleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
