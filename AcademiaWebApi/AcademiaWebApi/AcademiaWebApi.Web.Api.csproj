@@ -185,6 +185,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AcademiaWebApi.Data\AcademiaWebApi.Data.csproj">
+      <Project>{de87885b-1dda-4c7a-92f8-7985dd76f508}</Project>
+      <Name>AcademiaWebApi.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AcademiaWebApi.Web.Api.Models\AcademiaWebApi.Web.Api.Models.csproj">
       <Project>{11aaf485-7727-4c04-9f7f-50f8f99e2748}</Project>
       <Name>AcademiaWebApi.Web.Api.Models</Name>

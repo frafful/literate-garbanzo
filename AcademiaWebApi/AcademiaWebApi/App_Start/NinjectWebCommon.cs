@@ -10,7 +10,8 @@ namespace AcademiaWebApi.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-
+    using Data;
+    using Data.Repositories;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -61,7 +62,8 @@ namespace AcademiaWebApi.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-
+            kernel.Bind<IUnityOfWork>().To<UnityOfWork>().InRequestScope();
+            kernel.Bind<IMuscleRepository>().To<MuscleRepository>();
         }        
     }
 }
