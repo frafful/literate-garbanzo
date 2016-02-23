@@ -158,9 +158,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfigurator.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AutoMappingConfig\MuscleEntityToMuscleAutoMapperTypeConfigurator.cs" />
     <Compile Include="Controllers\MuscleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -185,6 +187,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AcademiaWebApi.Common\AcademiaWebApi.Common.csproj">
+      <Project>{60c4d49c-0166-47c2-bf90-e5550a3d1f5f}</Project>
+      <Name>AcademiaWebApi.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AcademiaWebApi.Data\AcademiaWebApi.Data.csproj">
       <Project>{de87885b-1dda-4c7a-92f8-7985dd76f508}</Project>
       <Name>AcademiaWebApi.Data</Name>
@@ -192,6 +198,10 @@
     <ProjectReference Include="..\AcademiaWebApi.Web.Api.Models\AcademiaWebApi.Web.Api.Models.csproj">
       <Project>{11aaf485-7727-4c04-9f7f-50f8f99e2748}</Project>
       <Name>AcademiaWebApi.Web.Api.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AcademiaWebApi.Web.Common\AcademiaWebApi.Web.Common.csproj">
+      <Project>{a65f15a0-5f40-4664-b48d-e86c28812751}</Project>
+      <Name>AcademiaWebApi.Web.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
