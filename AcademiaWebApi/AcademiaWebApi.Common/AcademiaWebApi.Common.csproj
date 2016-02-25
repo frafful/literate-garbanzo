@@ -48,9 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mappers\AutoMapperAdapter.cs" />
-    <Compile Include="Mappers\IAutoMapperTypeConfigurator.cs" />
-    <Compile Include="Mappers\IMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

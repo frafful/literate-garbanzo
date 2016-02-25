@@ -13,5 +13,7 @@ namespace AcademiaWebApi.Data.Repositories
         public MuscleRepository(BodyBuildingContext context) : base(context)
         {
         }
+        
+
     }
 }

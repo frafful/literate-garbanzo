@@ -1,5 +1,4 @@
 ﻿using AcademiaWebApi.App_Start;
-using AcademiaWebApi.Common.Mappers;
 using AcademiaWebApi.Web.Common;
 using System;
 using System.Collections.Generic;
@@ -19,9 +18,6 @@ namespace AcademiaWebApi
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
-            new AutoMapperConfigurator().Configure(
-               WebContainerManager.GetAll<IAutoMapperTypeConfigurator>());
         }
     }
 }

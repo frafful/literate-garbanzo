@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AcademiaWebApi.Common.Mappers
+namespace AcademiaWebApi.Data.Repositories
 {
-    public interface IAutoMapperTypeConfigurator
+    public interface IRepository<T>
     {
-        void Configure();
+        void Insert(T entity);
     }
 }

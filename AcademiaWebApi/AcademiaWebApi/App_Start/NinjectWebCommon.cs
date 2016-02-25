@@ -12,7 +12,9 @@ namespace AcademiaWebApi.App_Start
     using Ninject.Web.Common;
     using Data;
     using Data.Repositories;
-    using Common.Mappers;
+    using AutoMapper;
+    using AutoMappingConfig;
+    using MaintenanceProcessing;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -65,7 +67,15 @@ namespace AcademiaWebApi.App_Start
         {
             kernel.Bind<IUnityOfWork>().To<UnityOfWork>().InRequestScope();
             kernel.Bind<IMuscleRepository>().To<MuscleRepository>();
-            kernel.Bind<IMapper>().To<AutoMapperAdapter>();
+            kernel.Bind<IAddMuscleMaintenanceProcessor>().To<AddMuscleMaintenanceProcessor>();
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new MuscleEntityToMuscleAutoMapperTypeConfigurator());
+            });
+            //services.AddSingleton<IMapper>(sp => config.CreateMapper())
+            kernel.Bind<IMapper>().ToMethod(c => config.CreateMapper()).InSingletonScope();
+
         }
     }
 }
