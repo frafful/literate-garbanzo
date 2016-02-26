@@ -8,74 +8,48 @@ using AcademiaWebApi.Data.Contexts;
 
 namespace AcademiaWebApi.Data.Repositories
 {
-    public class GenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<T> : IDisposable, IGenericRepository<T> where T : class
     {
-        internal BodyBuildingContext context;
-        internal DbSet<TEntity> dbSet;
+        private BodyBuildingContext _context;
 
-        public GenericRepository(BodyBuildingContext context)
+        #region Ctor
+        public GenericRepository(IUnitOfWork unitOfWork)
         {
-            this.context = context;
-            this.dbSet = context.Set<TEntity>();
+            if (unitOfWork == null)
+                throw new ArgumentNullException("unitOfWork");
+
+            _context = unitOfWork as BodyBuildingContext;
+        }
+        #endregion
+
+        public T Get(int id)
+        {
+            return _context.Set<T>().Find(id);
         }
 
-        public virtual IEnumerable<TEntity> Get(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            string includeProperties = "")
+        public IQueryable<T> List()
         {
-            IQueryable<TEntity> query = dbSet;
-
-            if (filter != null)
-            {
-                query = query.Where(filter);
-            }
-
-            foreach (var includeProperty in includeProperties.Split
-                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                query = query.Include(includeProperty);
-            }
-
-            if (orderBy != null)
-            {
-                return orderBy(query).ToList();
-            }
-            else
-            {
-                return query.ToList();
-            }
+            return _context.Set<T>();
         }
 
-        public virtual TEntity GetByID(object id)
+        public void Add(T item)
         {
-            return dbSet.Find(id);
+            _context.Set<T>().Add(item);
         }
 
-        public virtual void Insert(TEntity entity)
+        public void Remove(T item)
         {
-            dbSet.Add(entity);
+            _context.Set<T>().Remove(item);
         }
 
-        public virtual void Delete(object id)
+        public void Update(T item)
         {
-            TEntity entityToDelete = dbSet.Find(id);
-            Delete(entityToDelete);
+            _context.Entry(item).State = EntityState.Modified;
         }
 
-        public virtual void Delete(TEntity entityToDelete)
+        public void Dispose()
         {
-            if (context.Entry(entityToDelete).State == EntityState.Detached)
-            {
-                dbSet.Attach(entityToDelete);
-            }
-            dbSet.Remove(entityToDelete);
-        }
-
-        public virtual void Update(TEntity entityToUpdate)
-        {
-            dbSet.Attach(entityToUpdate);
-            context.Entry(entityToUpdate).State = EntityState.Modified;
+            _context.Dispose();
         }
     }
 }

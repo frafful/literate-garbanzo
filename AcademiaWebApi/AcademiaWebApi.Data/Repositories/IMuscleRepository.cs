@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AcademiaWebApi.Data.Repositories
 {
-    public interface IMuscleRepository : IRepository<Muscle>
+    public interface IMuscleRepository : IGenericRepository<Muscle>, IDisposable
     {
 
     }

@@ -10,10 +10,10 @@ namespace AcademiaWebApi.Data.Repositories
 {
     public class MuscleRepository : GenericRepository<Muscle>, IMuscleRepository
     {
-        public MuscleRepository(BodyBuildingContext context) : base(context)
+        public MuscleRepository(IUnitOfWork unitOfWork) 
+            : base(unitOfWork)
         {
-        }
-        
 
+        }
     }
 }

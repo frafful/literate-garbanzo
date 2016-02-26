@@ -11,7 +11,7 @@ namespace AcademiaWebApi.Data
 {
     public class UnityOfWork : IUnityOfWork
     {
-        private BodyBuildingContext context = null;
+        private BodyBuildingContext context = new BodyBuildingContext();
         private GenericRepository<Muscle> muscleRepository;
 
         public GenericRepository<Muscle> MuscleRepository

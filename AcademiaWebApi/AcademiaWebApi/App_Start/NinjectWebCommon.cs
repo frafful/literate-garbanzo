@@ -65,8 +65,8 @@ namespace AcademiaWebApi.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IUnityOfWork>().To<UnityOfWork>().InRequestScope();
-            kernel.Bind<IMuscleRepository>().To<MuscleRepository>();
+            kernel.Bind<IUnitOfWork>().To<UnityOfWork>().InRequestScope();
+            //kernel.Bind<IMuscleRepository>().To<MuscleRepository>();
             kernel.Bind<IAddMuscleMaintenanceProcessor>().To<AddMuscleMaintenanceProcessor>();
 
             var config = new MapperConfiguration(cfg =>

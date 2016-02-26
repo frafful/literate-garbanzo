@@ -9,12 +9,19 @@ using System.Threading.Tasks;
 
 namespace AcademiaWebApi.Data.Contexts
 {
-    public class BodyBuildingContext : DbContext
+    public class BodyBuildingContext : DbContext, IUnitOfWork
     {
         public BodyBuildingContext() : base("BodyBuildingContext")
-        { }
+        {
+
+        }
 
         public IDbSet<Muscle> Muscle { get; set; }
+
+        public void Save()
+        {
+            base.SaveChanges();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

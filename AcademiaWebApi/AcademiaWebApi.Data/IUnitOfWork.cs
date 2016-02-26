@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace AcademiaWebApi.Data
 {
-    public interface IUnityOfWork : IDisposable
+    public interface IUnitOfWork
     {
         void Save();
-        GenericRepository<Muscle> MuscleRepository { get; }
     }
 }
