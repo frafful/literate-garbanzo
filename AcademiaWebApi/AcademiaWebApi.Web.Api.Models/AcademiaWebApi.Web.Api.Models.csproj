@@ -43,6 +43,7 @@
     <Compile Include="Equipment.cs" />
     <Compile Include="Exercise.cs" />
     <Compile Include="Muscle.cs" />
+    <Compile Include="NewMuscle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

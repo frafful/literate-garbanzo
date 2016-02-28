@@ -15,6 +15,9 @@ namespace AcademiaWebApi.App_Start
     using AutoMapper;
     using AutoMappingConfig;
     using MaintenanceProcessing;
+    using Data.Contexts;
+    using Common.Logger;
+    using log4net.Config;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -65,9 +68,13 @@ namespace AcademiaWebApi.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IUnitOfWork>().To<UnityOfWork>().InRequestScope();
-            //kernel.Bind<IMuscleRepository>().To<MuscleRepository>();
+            kernel.Bind<IUnitOfWork>().To<BodyBuildingContext>().InRequestScope();
+            kernel.Bind<IMuscleRepository>().To<MuscleRepository>();
             kernel.Bind<IAddMuscleMaintenanceProcessor>().To<AddMuscleMaintenanceProcessor>();
+
+            XmlConfigurator.Configure();
+            var logManager = new LogManagerAdapter();
+            kernel.Bind<ILogManager>().ToConstant(logManager);
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -77,5 +84,6 @@ namespace AcademiaWebApi.App_Start
             kernel.Bind<IMapper>().ToMethod(c => config.CreateMapper()).InSingletonScope();
 
         }
+
     }
 }

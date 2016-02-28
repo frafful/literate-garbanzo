@@ -53,6 +53,8 @@
     <Compile Include="Entities\Equipment.cs" />
     <Compile Include="Entities\Exercise.cs" />
     <Compile Include="Entities\Muscle.cs" />
+    <Compile Include="Exceptions\ChildObjectNotFoundException.cs" />
+    <Compile Include="Exceptions\RootObjectNotFoundException.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

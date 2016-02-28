@@ -5,6 +5,10 @@ using System.Net.Http;
 using System.Web.Http;
 using Newtonsoft.Json.Serialization;
 using System.Net.Http.Headers;
+using System.Web.Http.ExceptionHandling;
+using AcademiaWebApi.Web.Common.ErrorHandling;
+using AcademiaWebApi.Web.Common;
+using AcademiaWebApi.Common.Logger;
 
 namespace AcademiaWebApi
 {
@@ -22,6 +26,8 @@ namespace AcademiaWebApi
             );
 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            config.Services.Add(typeof(IExceptionLogger), new SimpleExceptionLogger(WebContainerManager.Get<ILogManager>()));
+            config.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
         }
     }
 }
