@@ -13,6 +13,7 @@ namespace AcademiaWebApi.AutoMappingConfig
         {
             CreateMap<Muscle, Web.Api.Models.Muscle>();
             CreateMap<Web.Api.Models.Muscle, Muscle>();
+            CreateMap<Web.Api.Models.NewMuscle, Muscle>();
         }
 
     }

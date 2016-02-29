@@ -9,6 +9,6 @@ namespace AcademiaWebApi.MaintenanceProcessing
 {
     public interface IAddMuscleMaintenanceProcessor
     {
-        Muscle AddMuscle(Muscle muscle);
+        Muscle AddMuscle(NewMuscle muscle);
     }
 }
