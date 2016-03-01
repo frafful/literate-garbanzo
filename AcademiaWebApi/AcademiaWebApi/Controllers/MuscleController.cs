@@ -27,9 +27,9 @@ namespace AcademiaWebApi.Controllers
         }
 
         [HttpPost]
-        public Muscle AddMuscle(HttpRequestMessage request, NewMuscle newMuscle)
+        public IHttpActionResult AddMuscle(HttpRequestMessage request, NewMuscle newMuscle)
         {
-            return _addMuscleMaintenanceProcessor.AddMuscle(newMuscle);
+            return new MuscleCreatedActionResult(request, _addMuscleMaintenanceProcessor.AddMuscle(newMuscle));
         }
     }
 }
